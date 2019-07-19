@@ -8,7 +8,8 @@ import requests
 import sqlite3
 import sql
 
-TOKEN = '678888523:AAFcp93yAa3--sHokD4Lv9BmfjsjLjw3eR0'
+#Bot token goes here
+TOKEN = ''
 
 #Initial Introduction of the bot
 def startmessage(bot , update):
