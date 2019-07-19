@@ -10,3 +10,5 @@
   - Filter a particular keyword and replies to the keyword when it finds that
   - Get replies whenever filtered text is encountered
   - Get Animated version of text on calling thonkify (Help has been taked from skittlesbot)
+  
+- Can be run using : `python3 tgbot.py`
