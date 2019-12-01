@@ -196,7 +196,7 @@ def main():
 	dp.add_handler(CommandHandler('github', getlink))
 	dp.add_handler(CommandHandler('website', getlink))
 	dp.add_handler(CommandHandler('meetup', getlink))
-	dp.add_handler(MessageHandler([Filters.status_update], welcome_message))
+	dp.add_handler(MessageHandler(Filters.status_update, welcome_message))
 	updater.start_polling()
 	updater.idle()
 
