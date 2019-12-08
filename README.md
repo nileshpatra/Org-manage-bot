@@ -10,7 +10,7 @@
   - Remove user
   - Filter a particular keyword and replies to the keyword when it finds that
   - Get replies whenever filtered text is encountered
-  - Get Animated version of text on calling thonkify (Help has been taked from skittlesbot)
+  - Get Animated version of text on calling thonkify (Some of the code has been referred from skittlesbot)
   
 # Testing the bot
 
@@ -28,3 +28,4 @@
  	```
  	python3 tgbot.py
  	```
+[Here](https://youtu.be/xiI_u60Vrq0) is a video detailing the setup
