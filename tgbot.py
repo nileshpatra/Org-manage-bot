@@ -7,9 +7,34 @@ from telegram.ext import CommandHandler , Updater , MessageHandler , Filters , r
 import requests
 import sqlite3
 import sql
+import configparser
 
 #Bot token goes here
 TOKEN = ''
+def CheckConfig():
+        '''
+        ChekConfig() funtion return the token from config.ini file
+        it will return False if token is empty or config.ini file structure changed
+        '''
+        config = configparser.ConfigParser()
+        config.read('config.ini')
+        TOKEN= ""
+        try:
+                token = config['telegram']['token']
+                
+                if token == "" or token == "TOKEN_KEY_WITHOUT_QUOTES":
+                        print("Token Should not be Empty please add it in config.ini file")
+                        return False
+                elif '"' in token or "'" in token:
+                        print("Do not add Quotes to token use direct value\ntoken=XXXX:XXXXXX")
+                        return False
+                        
+                else:
+                        return token
+        except:
+                print('Do not change Syntax of config.ini file!')
+                return False
+
 
 #Initial Introduction of the bot
 def startmessage(bot , update):
@@ -177,28 +202,33 @@ def filter_reply(bot , update):
 			message.reply_text(rows[0][1])
 	connection.close()
 
-def main():
-	# Added all the essential command handlers 
-	
-	updater = Updater(TOKEN)
-	dp = updater.dispatcher
-	dp.add_handler(CommandHandler('start' ,startmessage))
-	dp.add_handler(CommandHandler('sendlogo' ,sendlogo))
-	dp.add_handler(CommandHandler('addmeeting' ,add_meeting))
-	dp.add_handler(CommandHandler('next' ,get_list))
-	dp.add_handler(CommandHandler('filter',filter_resp))
-	dp.add_handler(CommandHandler('reply',filter_reply))
-	dp.add_handler(CommandHandler('thonkify',thonkify))
-	dp.add_handler(CommandHandler('help',helpbot))
-	dp.add_handler(CommandHandler('social',add_socialmedia))
-	dp.add_handler(CommandHandler('remove',remove_user))
-	dp.add_handler(CommandHandler('facebook', getlink))
-	dp.add_handler(CommandHandler('github', getlink))
-	dp.add_handler(CommandHandler('website', getlink))
-	dp.add_handler(CommandHandler('meetup', getlink))
-	dp.add_handler(MessageHandler(Filters.status_update, welcome_message))
-	updater.start_polling()
-	updater.idle()
+def main(TOKEN):
+        try:
+                updater = Updater(TOKEN)
+                dp = updater.dispatcher
+                BOT_COMMANDS = {'start':startmessage,
+                                 'sendlogo':sendlogo,
+                                 'addmeeting':add_meeting,
+                                 'next':get_list,
+                                 'filter':filter_resp,
+                                 'reply':filter_reply,
+                                 'thonkify':thonkify,
+                                 'help':helpbot,
+                                 'social':add_socialmedia,
+                                 'remove':remove_user,
+                                 'facebook':getlink,
+                                 'github':getlink,
+                                 'website':getlink,
+                                 'meetup':getlink}
+                for key,value in BOT_COMMANDS.items():
+                        dp.add_handler(CommandHandler(key ,value))
+                dp.add_handler(MessageHandler(Filters.status_update, welcome_message))
+                updater.start_polling()
+                updater.idle()
+        except:
+                print("The Token Is Invalid! Use Correct Token in config.ini file")
 
 if __name__ == '__main__':
-	main()
+        TOKEN = CheckConfig()
+        if TOKEN:        
+                main(TOKEN)
