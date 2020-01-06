@@ -15,8 +15,12 @@
 # Testing the bot
 
 - In order to test the bot, generate a token for your own bot with botfather
-- Copy-Paste the token that you were allotted inside the TOKEN='' variable in tgbot.py file
-	- For instance if the token generated is xyz, you should replace TOKEN='xyz'
+- Copy-Paste the token that you were allotted inside the token variable in config.ini file
+	- For instance if the token generated is xyz, you should replace token=xyz, the file should look like:
+	```
+	[telegram]
+	token=xyz
+	```
 - Do refer to [this](https://www.freecodecamp.org/news/learn-to-build-your-first-bot-in-telegram-with-python-4c99526765e4/) link to create your own instances of bots, and test the code.
 
 # To run in development mode:
@@ -28,4 +32,4 @@
  	```
  	python3 tgbot.py
  	```
-[Here](https://youtu.be/xiI_u60Vrq0) is a video detailing the setup
+[Here](https://youtu.be/xiI_u60Vrq0) is a video detailing the setup. Although it is not completely consistent with the current state of the repository, but it serves its purpose well. Do refer the rest of the readme as well.
