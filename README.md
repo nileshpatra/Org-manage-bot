@@ -34,4 +34,4 @@
  	```
 [Here](https://youtu.be/xiI_u60Vrq0) is a video detailing the setup. Although it is not completely consistent with the current state of the repository, but it serves its purpose well. Do refer the rest of the readme as well
 
-Also, for Anaconda users, they can refer to https://www.geeksforgeeks.org/python-add-packages-to-anaconda-environment/ for some basics of adding packages to environment and also help them in this project.:)
+Also, for Anaconda users, Please Refer to https://www.geeksforgeeks.org/python-add-packages-to-anaconda-environment/ for some basics of adding packages to environment and also help them in this project.:)
