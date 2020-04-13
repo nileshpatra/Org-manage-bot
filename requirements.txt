@@ -4,7 +4,7 @@ chardet==3.0.4
 cryptography==2.8
 future==0.18.2
 idna==2.8
-Pillow==6.2.1
+Pillow>=6.2.2
 pycparser==2.19
 python-telegram-bot==12.2.0
 requests==2.22.0
